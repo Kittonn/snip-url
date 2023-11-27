@@ -8,6 +8,11 @@
 # testing
 /coverage
 
+# lock files
+package-lock.json
+yarn.lock
+pnpm-lock.yaml
+
 # database
 /prisma/db.sqlite
 /prisma/db.sqlite-journal

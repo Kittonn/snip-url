@@ -5,22 +5,15 @@ import { signIn } from "next-auth/react";
 
 export default async function Auth() {
   const handleSignIn = async () => {
-    try {
-      await signIn("google", {
-        callbackUrl: "/dashboard",
-      });
-    } catch (error) {
-      console.error(error);
-    }
+    await signIn("google", { callbackUrl: "/dashboard" });
   };
-
   return (
-    <main>
+    <div>
       <h1>Welcome 👋</h1>
       <button onClick={handleSignIn}>
-        <BiLogoGmail />
-        Sign in with Gmail
+        <BiLogoGmail size={30} />
+        Sign in with Google
       </button>
-    </main>
+    </div>
   );
 }

@@ -9,7 +9,10 @@ export default async function Home() {
         <p className="text-xl font-semibold">A next generation url shortener</p>
       </div>
       <div>
-        <Link href={"/auth"} className="text-sm font-semibold flex items-center gap-2">
+        <Link
+          href={"/auth"}
+          className="flex items-center gap-2 text-sm font-semibold"
+        >
           <BiRocket />
           Get Started
         </Link>

@@ -1,9 +1,15 @@
+import Container from "./Container";
+import Link from "next/link";
+
 export default function Footer() {
   return (
-    <div className="text-center">
+    <Container className="text-center">
       <p>
-      Made with ❤️ by Kitton
+        Made with ❤️ by{" "}
+        <Link href={"https://github.com/kittonn"} target="_blank">
+          Kitton
+        </Link>
       </p>
-    </div>
+    </Container>
   );
 }

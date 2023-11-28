@@ -10,7 +10,7 @@ export default async function Navbar() {
     <Container>
       <nav className="flex items-center justify-between">
         <div className="text-xl font-semibold">
-          <h1>SnipUrl.</h1>
+          <Link href={"/"}>SnipUrl.</Link>
         </div>
         <div>
           {session ? (

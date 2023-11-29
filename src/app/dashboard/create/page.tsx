@@ -1,10 +1,13 @@
 import CreateLinkForm from "@/components/link/CreateLinkForm";
+import Container from "@/components/Container";
 
 export default async function CreateLink() {
   return (
     <div>
-      <h1>Create New Link</h1>
-      <CreateLinkForm />
+      <Container>
+        <h1>Create New Link</h1>
+        <CreateLinkForm />
+      </Container>
     </div>
   );
 }

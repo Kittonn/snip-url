@@ -5,6 +5,7 @@ import { cookies } from "next/headers";
 import Navbar from "@/components/navbar/Navbar";
 import Footer from "@/components/Footer";
 import { cn } from "@/libs/utils";
+import { Toaster } from "@/components/ui/toaster";
 
 import { TRPCReactProvider } from "@/trpc/react";
 
@@ -30,6 +31,7 @@ export default function RootLayout({
         <TRPCReactProvider cookies={cookies().toString()}>
           <Navbar />
           <div className="flex-1">{children}</div>
+          <Toaster />
           <Footer />
         </TRPCReactProvider>
       </body>

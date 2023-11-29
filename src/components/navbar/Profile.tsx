@@ -11,6 +11,7 @@ import {
 } from "@/components/ui/dropdown-menu";
 import Link from "next/link";
 import { signOut } from "next-auth/react";
+import { useToast } from "../ui/use-toast";
 
 interface ProfileProps {
   name: string;
@@ -18,10 +19,19 @@ interface ProfileProps {
 }
 
 export default function Profile({ name, image }: ProfileProps) {
+  const { toast } = useToast();
   const shortName = name.split(" ")[0];
 
   const handleSignOut = async () => {
-    await signOut({ callbackUrl: "/" });
+    try {
+      await signOut({ callbackUrl: "/" });
+    } catch (error) {
+      toast({
+        title: "Error",
+        description: "An error occurred while signing out.",
+        variant: "destructive",
+      });
+    }
   };
 
   return (

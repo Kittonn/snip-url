@@ -20,6 +20,7 @@ export default function SignInButton() {
         title: "Error",
         description: "Something went wrong, please try again later.",
         variant: "destructive",
+        duration: 3000,
       });
     }
   };

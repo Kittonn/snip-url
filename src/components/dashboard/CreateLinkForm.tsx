@@ -22,7 +22,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { useToast } from "../ui/use-toast";
 
 export default function CreateLinkForm() {
-  const { push } = useRouter();
+  const { push, refresh } = useRouter();
   const { toast } = useToast();
   const form = useForm<z.infer<typeof CreateLinkSchema>>({
     resolver: zodResolver(CreateLinkSchema),
@@ -38,8 +38,10 @@ export default function CreateLinkForm() {
       toast({
         title: "Success",
         description: "Link created successfully.",
+        duration: 3000,
       });
 
+      refresh();
       push("/dashboard");
     },
     onError: () => {
@@ -47,6 +49,7 @@ export default function CreateLinkForm() {
         title: "Error",
         description: "Something went wrong. Please try again later.",
         variant: "destructive",
+        duration: 3000,
       });
     },
   });

@@ -1,5 +1,5 @@
 import CreateLinkForm from "@/components/dashboard/CreateLinkForm";
-import Container from "@/components/Container";
+import Container from "@/components/shared/Container";
 
 export default async function CreateLink() {
   return (

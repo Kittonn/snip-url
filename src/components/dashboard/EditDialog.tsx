@@ -37,7 +37,7 @@ export default function EditDialog(link: Link) {
     },
   });
 
-  const { mutate } = api.link.UpdateLink.useMutation({
+  const { mutate } = api.link.updateLink.useMutation({
     onSuccess: () => {
       toast({
         title: "Success",

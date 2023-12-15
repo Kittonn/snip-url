@@ -1,4 +1,4 @@
-import Container from "@/components/Container";
+import Container from "@/components/shared/Container";
 import SignInButton from "@/components/auth/SignInButton";
 
 export default async function Auth() {

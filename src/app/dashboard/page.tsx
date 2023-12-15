@@ -1,13 +1,13 @@
 import { api } from "@/trpc/server";
 import Link from "next/link";
-import Container from "@/components/Container";
+import Container from "@/components/shared/Container";
 import { Plus } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import LinkCard from "@/components/dashboard/LinkCard";
 import { Button } from "@/components/ui/button";
 
 export default async function Dashboard() {
-  const allLinks = await api.link.getAllLinks.query();
+  const allLinks = await api.link.getLinks.query();
 
   return (
     <main>

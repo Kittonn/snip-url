@@ -1,4 +1,4 @@
-import Container from "../Container";
+import Container from "../shared/Container";
 import { Button } from "../ui/button";
 import Link from "next/link";
 import Profile from "./Profile";

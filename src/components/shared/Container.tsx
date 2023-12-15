@@ -1,4 +1,4 @@
-import { cn } from "@/libs/utils";
+import { cn } from "@/libs/utils/utils";
 
 export default function Container({
   className,

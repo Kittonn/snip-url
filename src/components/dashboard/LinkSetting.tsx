@@ -17,7 +17,7 @@ import EditDialog from "./EditDialog";
 export default function LinkSetting(link: Link) {
   const { toast } = useToast();
   const { refresh } = useRouter();
-  const { mutate } = api.link.DeleteLink.useMutation({
+  const { mutate } = api.link.deleteLink.useMutation({
     onSuccess: () => {
       toast({
         title: "Success",

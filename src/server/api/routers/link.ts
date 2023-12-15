@@ -1,8 +1,12 @@
-import { CreateLinkSchema, DeleteLinkSchema, UpdateLinkSchema } from "@/schema/link";
+import {
+  CreateLinkSchema,
+  DeleteLinkSchema,
+  UpdateLinkSchema,
+} from "@/schema/link";
 import { createTRPCRouter, protectedProcedure } from "@/server/api/trpc";
 
 export const linkRouter = createTRPCRouter({
-  create: protectedProcedure
+  createLink: protectedProcedure
     .input(CreateLinkSchema)
     .mutation(async ({ ctx, input }) => {
       return ctx.db.link.create({
@@ -14,19 +18,19 @@ export const linkRouter = createTRPCRouter({
         },
       });
     }),
-  getAllLinks: protectedProcedure.query(({ ctx }) => {
+  getLinks: protectedProcedure.query(({ ctx }) => {
     return ctx.db.link.findMany({
       where: { owner: { id: ctx.session.user.id } },
     });
   }),
-  DeleteLink: protectedProcedure.input(DeleteLinkSchema).mutation(
-    async ({ ctx, input }) => {
+  deleteLink: protectedProcedure
+    .input(DeleteLinkSchema)
+    .mutation(async ({ ctx, input }) => {
       return ctx.db.link.delete({
         where: { slug: input.slug, ownerId: ctx.session.user.id },
       });
-    }
-  ),
-  UpdateLink: protectedProcedure
+    }),
+  updateLink: protectedProcedure
     .input(UpdateLinkSchema)
     .mutation(async ({ ctx, input }) => {
       return ctx.db.link.update({

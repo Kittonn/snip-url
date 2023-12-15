@@ -33,7 +33,7 @@ export default function CreateLinkForm() {
     },
   });
 
-  const { mutate } = api.link.create.useMutation({
+  const { mutate } = api.link.createLink.useMutation({
     onSuccess: () => {
       toast({
         title: "Success",
@@ -41,8 +41,8 @@ export default function CreateLinkForm() {
         duration: 3000,
       });
 
-      refresh();
       push("/dashboard");
+      refresh();
     },
     onError: () => {
       toast({

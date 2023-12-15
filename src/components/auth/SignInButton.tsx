@@ -26,17 +26,14 @@ export default function SignInButton() {
   };
   return (
     <div className="mt-6">
-      {loading ? (
-        <Button disabled>
-          <Loader2 className="mr-2 h-6 w-6 animate-spin" />
-          Please wait
-        </Button>
-      ) : (
-        <Button onClick={handleSignIn}>
-          <Mail className="mr-2 h-6 w-6" />
-          Sign in with Gmail
-        </Button>
-      )}
+      <Button
+        loading={loading}
+        loadingtext="Please wait"
+        onClick={handleSignIn}
+      >
+        <Mail className="mr-2 h-6 w-6" />
+        Sign in with Gmail
+      </Button>
     </div>
   );
 }

@@ -20,8 +20,10 @@ import {
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { useToast } from "../ui/use-toast";
+import { useState } from "react";
 
 export default function CreateLinkForm() {
+  const [loading, setloading] = useState(false);
   const { push, refresh } = useRouter();
   const { toast } = useToast();
   const form = useForm<z.infer<typeof CreateLinkSchema>>({
@@ -41,6 +43,7 @@ export default function CreateLinkForm() {
         duration: 3000,
       });
 
+      setloading(false);
       push("/dashboard");
       refresh();
     },
@@ -55,6 +58,7 @@ export default function CreateLinkForm() {
   });
 
   const onSubmit = (values: z.infer<typeof CreateLinkSchema>) => {
+    setloading(true);
     mutate(values);
   };
 
@@ -113,7 +117,12 @@ export default function CreateLinkForm() {
           )}
         />
 
-        <Button type="submit" className="mt-4">
+        <Button
+          type="submit"
+          className="mt-4"
+          loading={loading}
+          loadingtext="Create your link..."
+        >
           <Plus className="mr-2 h-5 w-5" />
           Create
         </Button>

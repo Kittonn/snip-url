@@ -1,6 +1,5 @@
 import {
   DialogContent,
-  DialogDescription,
   DialogHeader,
   DialogTitle,
   DialogClose,
@@ -8,14 +7,13 @@ import {
 import {
   Form,
   FormControl,
-  FormDescription,
   FormField,
   FormItem,
   FormLabel,
 } from "@/components/ui/form";
 import { Link } from "@prisma/client";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { useForm } from "react-hook-form";
+import { set, useForm } from "react-hook-form";
 import { UpdateLinkSchema } from "@/schema/link";
 import { z } from "zod";
 import { api } from "@/trpc/react";
@@ -24,10 +22,12 @@ import { useRouter } from "next/navigation";
 import { Button } from "../ui/button";
 import { Textarea } from "../ui/textarea";
 import { Input } from "../ui/input";
+import { useState } from "react";
 
 export default function EditDialog(link: Link) {
   const { toast } = useToast();
-  const { refresh, push } = useRouter();
+  const { refresh } = useRouter();
+  const [loading, setloading] = useState(false);
   const form = useForm<z.infer<typeof UpdateLinkSchema>>({
     resolver: zodResolver(UpdateLinkSchema),
     defaultValues: {
@@ -44,7 +44,7 @@ export default function EditDialog(link: Link) {
         description: "Link updated successfully.",
         duration: 3000,
       });
-
+      setloading(false);
       refresh();
     },
     onError: () => {
@@ -58,6 +58,7 @@ export default function EditDialog(link: Link) {
   });
 
   const onSubmit = (values: z.infer<typeof UpdateLinkSchema>) => {
+    setloading(true);
     mutate(values);
   };
 
@@ -95,7 +96,12 @@ export default function EditDialog(link: Link) {
           />
 
           <DialogClose asChild>
-            <Button type="submit" className="mt-4">
+            <Button
+              type="submit"
+              className="mt-4"
+              loading={loading}
+              loadingtext="Update your link..."
+            >
               Edit
             </Button>
           </DialogClose>

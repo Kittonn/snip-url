@@ -4,7 +4,6 @@ import {
   Card,
   CardContent,
   CardDescription,
-  CardFooter,
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
@@ -13,6 +12,7 @@ import { Button } from "../ui/button";
 import { useToast } from "../ui/use-toast";
 import LinkSetting from "./LinkSetting";
 import { Link } from "@prisma/client";
+import { sliceUrl } from "@/libs/utils/url";
 
 export default function LinkCard(link: Link) {
   const { toast } = useToast();
@@ -44,7 +44,7 @@ export default function LinkCard(link: Link) {
             <LinkSetting {...link} />
           </div>
         </CardTitle>
-        <CardDescription>{link.url}</CardDescription>
+        <CardDescription>{sliceUrl(link.url)}</CardDescription>
       </CardHeader>
       <CardContent>
         <p>{link.description}</p>

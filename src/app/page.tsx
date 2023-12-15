@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { Github, Rocket } from "lucide-react";
-import Container from "@/components/Container";
+import Container from "@/components/shared/Container";
 
 export default async function Home() {
   return (
@@ -14,10 +14,7 @@ export default async function Home() {
         </div>
         <div className="mt-8 flex flex-col items-center gap-6 sm:flex-row">
           <div>
-            <Link
-              href={"/auth"}
-              className="flex items-center font-semibold"
-            >
+            <Link href={"/auth"} className="flex items-center font-semibold">
               <Rocket className="mr-2 h-6 w-6" />
               Get Started
             </Link>

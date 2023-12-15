@@ -3,8 +3,8 @@ import "@/styles/globals.css";
 import { Inter } from "next/font/google";
 import { cookies } from "next/headers";
 import Navbar from "@/components/navbar/Navbar";
-import Footer from "@/components/Footer";
-import { cn } from "@/libs/utils";
+import Footer from "@/components/footer/Footer";
+import { cn } from "@/libs/utils/utils";
 import { Toaster } from "@/components/ui/toaster";
 
 import { TRPCReactProvider } from "@/trpc/react";
